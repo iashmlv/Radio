@@ -30,4 +30,44 @@ class RadioTest {
         assertEquals(5, radio.getCurrentStation());
     }
 
+    @Test
+    void shouldSetPreviousStationLoop() {
+        Radio radio = new Radio();
+        radio.setCurrentStation(0);
+        radio.setPreviousStation();
+        assertEquals(9, radio.getCurrentStation());
+    }
+
+    @Test
+    void shouldIncreaseVolume() {
+        Radio radio = new Radio();
+        radio.setCurrentVolume(5);
+        radio.increaseVolume();
+        assertEquals(6, radio.getCurrentVolume());
+    }
+
+    @Test
+    void shouldIncreaseVolumeLoop() {
+        Radio radio = new Radio();
+        radio.setCurrentVolume(10);
+        radio.increaseVolume();
+        assertEquals(10, radio.getCurrentVolume());
+    }
+
+    @Test
+    void shouldDecreaseVolume() {
+        Radio radio = new Radio();
+        radio.setCurrentVolume(6);
+        radio.decreaseVolume();
+        assertEquals(5, radio.getCurrentVolume());
+    }
+
+    @Test
+    void shouldDecreaseVolumeLoop() {
+        Radio radio = new Radio();
+        radio.setCurrentVolume(0);
+        radio.decreaseVolume();
+        assertEquals(0, radio.getCurrentVolume());
+    }
+
 }
