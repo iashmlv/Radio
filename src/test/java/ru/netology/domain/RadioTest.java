@@ -5,10 +5,10 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class RadioTest {
+    Radio radio = new Radio(10);
 
     @Test
     void shouldSetNextStation() {
-        Radio radio = new Radio();
         radio.setCurrentStation(5);
         radio.setNextStation();
         assertEquals(6, radio.getCurrentStation());
@@ -16,15 +16,13 @@ class RadioTest {
 
     @Test
     void shouldSetNextStationLoop() {
-        Radio radio = new Radio();
-        radio.setCurrentStation(9);
+        radio.setCurrentStation(10);
         radio.setNextStation();
         assertEquals(0, radio.getCurrentStation());
     }
 
     @Test
     void shouldSetPreviousStation() {
-        Radio radio = new Radio();
         radio.setCurrentStation(6);
         radio.setPreviousStation();
         assertEquals(5, radio.getCurrentStation());
@@ -32,39 +30,34 @@ class RadioTest {
 
     @Test
     void shouldSetPreviousStationLoop() {
-        Radio radio = new Radio();
         radio.setCurrentStation(0);
         radio.setPreviousStation();
-        assertEquals(9, radio.getCurrentStation());
+        assertEquals(10, radio.getCurrentStation());
     }
 
     @Test
     void shouldIncreaseVolume() {
-        Radio radio = new Radio();
-        radio.setCurrentVolume(5);
+        radio.setCurrentVolume(60);
         radio.increaseVolume();
-        assertEquals(6, radio.getCurrentVolume());
+        assertEquals(61, radio.getCurrentVolume());
     }
 
     @Test
     void shouldIncreaseVolumeLoop() {
-        Radio radio = new Radio();
-        radio.setCurrentVolume(10);
+        radio.setCurrentVolume(100);
         radio.increaseVolume();
-        assertEquals(10, radio.getCurrentVolume());
+        assertEquals(100, radio.getCurrentVolume());
     }
 
     @Test
     void shouldDecreaseVolume() {
-        Radio radio = new Radio();
-        radio.setCurrentVolume(6);
+        radio.setCurrentVolume(60);
         radio.decreaseVolume();
-        assertEquals(5, radio.getCurrentVolume());
+        assertEquals(59, radio.getCurrentVolume());
     }
 
     @Test
     void shouldDecreaseVolumeLoop() {
-        Radio radio = new Radio();
         radio.setCurrentVolume(0);
         radio.decreaseVolume();
         assertEquals(0, radio.getCurrentVolume());
