@@ -70,4 +70,39 @@ class RadioTest {
         assertEquals(0, radio.getCurrentVolume());
     }
 
+    @Test
+    void currentStation() {
+        Radio radio = new Radio();
+        radio.setCurrentStation(7);
+        assertEquals(7, radio.getCurrentStation());
+    }
+
+    @Test
+    void maxCurrentStation() {
+        Radio radio = new Radio();
+        radio.setCurrentStation(9);
+        assertEquals(9, radio.getMaxStation(), radio.getCurrentStation());
+    }
+
+    @Test
+    void minCurrentStation() {
+        Radio radio = new Radio();
+        radio.setCurrentStation(0);
+        assertEquals(0, radio.getMinStation(), radio.getCurrentStation());
+    }
+
+    @Test
+    void overMaxStation() {
+        Radio radio = new Radio();
+        radio.setCurrentStation(13);
+        assertEquals(9, radio.getMaxStation(), radio.getCurrentStation());
+    }
+
+    @Test
+    void underMinStation() {
+        Radio radio = new Radio();
+        radio.setCurrentStation(-12);
+        assertEquals(radio.getMinStation(), radio.getCurrentStation());
+    }
+
 }

@@ -49,8 +49,15 @@ public class Radio {
     }
 
     public void setCurrentStation(int currentStation) {
+        if(currentStation>maxStation){
+            return;
+        }
+        if(currentStation<minStation){
+            return;
+        }
         this.currentStation = currentStation;
     }
+
 
     public int getCurrentVolume() {
         return currentVolume;
